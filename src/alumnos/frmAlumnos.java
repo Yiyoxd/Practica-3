@@ -32,6 +32,7 @@ public class frmAlumnos extends JFrame{
         setTitle("Alumnos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
+        setResizable(false);
         poblarComboBox();
         btnAceptar.addActionListener(e -> {
             Alumno alumno = enviarDatos();
@@ -55,7 +56,7 @@ public class frmAlumnos extends JFrame{
 
     private void guardarDatos(Alumno alumno) {
         Path ruta = Path.of(path);
-        String contenido = alumno.getNombre();
+        String contenido = alumno.toString();
         try(FileWriter writer = new FileWriter(ruta.toFile(), true)) {
             PrintWriter printer = new PrintWriter(writer);
             printer.println(contenido);
